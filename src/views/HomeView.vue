@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from "@/components/HelloWorld.vue";
+import axios from "axios";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+  mounted() {
+    axios
+      .get("http://192.168.178.101:3000/foo")
+      .then(function (response) {
+        // handle success
+        console.log(response.data.msg);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  },
+};
 </script>
