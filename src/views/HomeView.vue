@@ -17,7 +17,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://192.168.178.101:3000/foo")
+      .get("http://localhost:3000/foo")
       .then(function (response) {
         // handle success
         console.log(response.data.msg);
